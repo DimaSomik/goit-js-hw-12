@@ -1,6 +1,11 @@
 .box {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+.searchBar {
+    margin-bottom: 40px;
 }
 
 input[type="text"] {
@@ -22,4 +27,15 @@ input[type="text"] {
     color: #FFF;
     text-align: center;
     font-size: 16px;
+}
+
+.gallery {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style-type: none;
 }

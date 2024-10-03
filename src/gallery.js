@@ -1,9 +1,13 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+import { createListItem } from "./createGallery";   
 
 // Constants
 const searchInput = document.getElementById('searchImages');
 const searchButton = document.getElementById('searchBtn');
+const gallery = document.querySelector('.gallery');
 
 // PixaBay properties
 const key = "46332612-74f33d1ba9ca951ac6c22d341";
@@ -34,6 +38,17 @@ searchButton.addEventListener('click', () => {
             iziToast.error({message: `Sorry, there are no images matching your search query. Please try again!`});
             return;
         }
+
+        gallery.innerHTML = "";
+        createListItem(data.hits, gallery);
+        const lightBox = new SimpleLightbox("ul.gallery a", {
+            captionType: "attr",
+            captionsData: "alt",
+            sourceAttr: "href",
+            overlay: true,
+            overlayOpacity: 1,
+        });        
+
         console.log(data);
     })
       .catch(error => {
