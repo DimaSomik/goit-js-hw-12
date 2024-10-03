@@ -1,0 +1,25 @@
+.box {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"] {
+    width: 240px;
+    height: 35px;
+    padding-left: 15px;
+    border: solid 1.5px #6e6c6c;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#searchBtn {
+    width: 85px;
+    height: 36px;
+    padding: 8px 16px 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(78, 117, 255, 1);
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+}
