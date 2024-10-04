@@ -17,6 +17,10 @@ input[type="text"] {
     font-size: 16px;
 }
 
+input[type="text"]:hover {
+    border: solid 1.5px #000;
+}
+
 #searchBtn {
     width: 85px;
     height: 36px;
@@ -29,6 +33,10 @@ input[type="text"] {
     font-size: 16px;
 }
 
+#searchBtn:hover {
+    background-color: rgba(108, 140, 255, 1);
+}
+
 .gallery {
     margin: 0;
     padding: 0;
@@ -39,3 +47,66 @@ input[type="text"] {
     gap: 1rem;
     list-style-type: none;
 }
+
+.gallery-image {
+    border: solid 1px #000;
+    border-bottom: none;
+    width: 360px;
+    height: 200px;
+}
+
+.desc-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border: solid 1px #000;
+    border-top: none;
+    padding: 10px;
+}
+
+.inner-desc-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.loaderBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 4px solid #FFF;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  .loader::after {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border-left: 4px solid #FF3D00;
+    border-bottom: 4px solid transparent;
+    animation: rotation 0.5s linear infinite reverse;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 

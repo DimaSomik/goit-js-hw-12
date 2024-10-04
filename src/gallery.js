@@ -8,6 +8,7 @@ import { createListItem } from "./createGallery";
 const searchInput = document.getElementById('searchImages');
 const searchButton = document.getElementById('searchBtn');
 const gallery = document.querySelector('.gallery');
+const loader = document.querySelector('.loader');
 
 // PixaBay properties
 const key = "46332612-74f33d1ba9ca951ac6c22d341";
@@ -16,6 +17,8 @@ const orientation = "horizontal";
 const safesearch = "true";
 
 searchButton.addEventListener('click', () => {
+    loader.style.display = "block";
+    gallery.style.display = "none"
     let URL = "https://pixabay.com/api/?key="+key
           +"&q="+encodeURIComponent(`${searchInput.value}`)
           +"&image_type="+image_type
@@ -35,24 +38,25 @@ searchButton.addEventListener('click', () => {
     })
       .then(data => {
         if (data.total == 0) {
+            loader.style.display = "none";
             iziToast.error({message: `Sorry, there are no images matching your search query. Please try again!`});
             return;
         }
 
+        loader.style.display = "none";
         gallery.innerHTML = "";
         createListItem(data.hits, gallery);
+        gallery.style.display = "flex";
         const lightBox = new SimpleLightbox("ul.gallery a", {
             captionType: "attr",
             captionsData: "alt",
             sourceAttr: "href",
             overlay: true,
             overlayOpacity: 1,
-        });        
-
-        console.log(data);
+        });
+        lightBox.refresh();
     })
       .catch(error => {
         console.log(error);
     });
 });
-
