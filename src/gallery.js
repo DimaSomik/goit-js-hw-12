@@ -2,11 +2,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { createListItem } from "./createGallery";  
-import { defineConfig } from 'vite'
-export default defineConfig({
-  base: '' // a empty string
-}) 
+import { createListItem } from "./createGallery";   
 
 // Constants
 const searchInput = document.getElementById('searchImages');
