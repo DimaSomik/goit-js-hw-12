@@ -49,7 +49,7 @@ const generateImages = async (value, page) => {
       hideElement(loadMoreBtn);
       iziToast.error({message: `Sorry, there are no images matching your search query. Please try again!`});
       return;
-    } else if (page * 39 >= totalHits) {
+    } else if (page * 39 >= totalHits && page != 1) {
       hideElement(secondLoader);
       hideElement(loadMoreBtn);
       iziToast.info({message: `We're sorry, but you've reached the end of search results.`});
@@ -79,6 +79,7 @@ searchForm.addEventListener('submit', event => {
   showBlock(loader);
   hideElement(gallery);
   hideElement(loadMoreBtn);
+  currentPage = 1;
   searchValue = document.getElementById('searchImages').value.trim();
   gallery.innerHTML = "";
   
