@@ -56,7 +56,6 @@ const generateImages = async (value, page) => {
       return;
     }
 
-    console.log(images);
     hideElement(loader);
     hideElement(secondLoader);
     createListItem(images.hits, gallery);
@@ -86,11 +85,15 @@ searchForm.addEventListener('submit', event => {
   generateImages(searchValue, currentPage);
 });
 
-loadMoreBtn.addEventListener('click', () => {
+loadMoreBtn.addEventListener('click', async () => {
   currentPage++;
   hideElement(loadMoreBtn);
   showBlock(secondLoader);
-  generateImages(searchValue, currentPage);
-  const galleryItemHeight = document.querySelector('.gallery-link').getBoundingClientRect().height;
-  window.scrollBy({ top: galleryItemHeight * 2, behavior: 'smooth' });
-})
+
+  await generateImages(searchValue, currentPage);
+
+  const galleryItemHeight = document
+    .querySelector('.gallery-link')
+    .getBoundingClientRect().height;
+  window.scrollBy({ top: galleryItemHeight * 2 - 10, behavior: 'smooth' });
+});
